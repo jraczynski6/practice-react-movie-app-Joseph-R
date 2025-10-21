@@ -8,6 +8,16 @@ export default function MovieSelector() {
 
     const FetchMovies = () => {
         //fetch logic
+
+        setIsLoading(true);
+
+        const movieData = {
+            Comedy: ["The Big Lebowski", "Borat", "Dr. Strangelove"],
+            Crime: ["Reservoir Dogs", "Donnie Brasco", "Goodfellas"],
+            Horror: ["The Thing", "The Lighthouse", "Alien"]
+        };
+        
+        setIsLoading(false);
     };
 
     return (
@@ -19,7 +29,7 @@ export default function MovieSelector() {
                 <option value="Horror">Horror</option>
             </select>
 
-            {/* button */}
+            <button onClick={FetchMovies}>Fetch Movies</button>
 
             {/* conditional rendering */}
         </div>
