@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 export default function MovieSelector() {
+    // state variables
     const [selectedGenre, setSelectedGenre] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [movies, setMovies] = useState([]);
 
+    // TODO fetch logic 
     const FetchMovies = () => {
-        //fetch logic
 
         setIsLoading(true);
 
@@ -16,13 +17,19 @@ export default function MovieSelector() {
             Crime: ["Reservoir Dogs", "Donnie Brasco", "Goodfellas"],
             Horror: ["The Thing", "The Lighthouse", "Alien"]
         };
-        
+        // TODO handle error event if no genre is selected 
+        // TODO handle a loading message while the app "fetches" movie data.
+
+
+        setMovies(movieData[selectedGenre]);
         setIsLoading(false);
     };
 
     return (
         <div>
-            <select>
+            <select value={selectedGenre}
+            // TODO add onChange event handler
+            >
                 <option value="">Select Genre</option>
                 <option value="Comedy">Comedy</option>
                 <option value="Action">Action</option>
@@ -31,7 +38,9 @@ export default function MovieSelector() {
 
             <button onClick={FetchMovies}>Fetch Movies</button>
 
-            {/* conditional rendering */}
+            {/* TODO conditional rendering */}
+            {/* TODO display error message */}
+            {/* TODO dusplay loading message */}
         </div>
     )
 }
