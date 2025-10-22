@@ -27,17 +27,27 @@ export default function MovieSelector() {
 
     return (
         <div>
-            <select value={selectedGenre}
-            // TODO add onChange event handler
+            <select 
+                value={selectedGenre}
+                onChange={(event) => setSelectedGenre(event.target.value)}
             >
                 <option value="">Select Genre</option>
                 <option value="Comedy">Comedy</option>
-                <option value="Action">Action</option>
+                <option value="Crime">Crime</option>
                 <option value="Horror">Horror</option>
             </select>
 
             <button onClick={FetchMovies}>Fetch Movies</button>
 
+            {isLoading && <p>Loading...</p>}
+            {error && <p>Error. Please Select movie genre.</p>}
+            {!isLoading && movies.length > 0 && (
+                <ul>
+                   {movies.map((movie, index) => (
+                    <li key={index}>{movie}</li>
+                   ))} 
+                </ul>
+            )}
             {/* TODO conditional rendering */}
             {/* TODO display error message */}
             {/* TODO dusplay loading message */}
