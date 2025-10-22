@@ -11,15 +11,20 @@ export default function MovieSelector() {
     const FetchMovies = () => {
 
         setIsLoading(true);
+        setMovies([]);
+        setError("");
 
         const movieData = {
             Comedy: ["The Big Lebowski", "Borat", "Dr. Strangelove"],
             Crime: ["Reservoir Dogs", "Donnie Brasco", "Goodfellas"],
             Horror: ["The Thing", "The Lighthouse", "Alien"]
         };
-        // TODO handle error event if no genre is selected 
-        // TODO handle a loading message while the app "fetches" movie data.
-
+        
+        if (!selectedGenre) {
+            setError("Error. Please select a genre.");
+            setIsLoading(false);
+            return;
+        };
 
         setMovies(movieData[selectedGenre]);
         setIsLoading(false);
@@ -39,8 +44,11 @@ export default function MovieSelector() {
 
             <button onClick={FetchMovies}>Fetch Movies</button>
 
+            {/* conditional rendering */}
             {isLoading && <p>Loading...</p>}
-            {error && <p>Error. Please Select movie genre.</p>}
+
+            {error && <p>{error}</p>}
+
             {!isLoading && movies.length > 0 && (
                 <ul>
                    {movies.map((movie, index) => (
@@ -48,9 +56,6 @@ export default function MovieSelector() {
                    ))} 
                 </ul>
             )}
-            {/* TODO conditional rendering */}
-            {/* TODO display error message */}
-            {/* TODO dusplay loading message */}
         </div>
     )
 }
