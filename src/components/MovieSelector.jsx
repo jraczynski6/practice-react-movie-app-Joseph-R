@@ -1,4 +1,6 @@
 import { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 export default function MovieSelector() {
     // state variables
@@ -19,20 +21,23 @@ export default function MovieSelector() {
             Crime: ["Reservoir Dogs", "Donnie Brasco", "Goodfellas"],
             Horror: ["The Thing", "The Lighthouse", "Alien"]
         };
-        
+
         if (!selectedGenre) {
             setError("Error. Please select a genre.");
             setIsLoading(false);
             return;
         };
 
-        setMovies(movieData[selectedGenre]);
-        setIsLoading(false);
+        // simulate timeout
+        setTimeout(() => {
+            setMovies(movieData[selectedGenre]);
+            setIsLoading(false);
+        }, 5000);
     };
 
     return (
         <div>
-            <select 
+            <select
                 value={selectedGenre}
                 onChange={(event) => setSelectedGenre(event.target.value)}
             >
@@ -45,15 +50,19 @@ export default function MovieSelector() {
             <button onClick={FetchMovies}>Fetch Movies</button>
 
             {/* conditional rendering */}
-            {isLoading && <p>Loading...</p>}
+            {isLoading && (
+                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                    <CircularProgress />
+                </Box>
+            )}
 
             {error && <p>{error}</p>}
 
             {!isLoading && movies.length > 0 && (
                 <ul>
-                   {movies.map((movie, index) => (
-                    <li key={index}>{movie}</li>
-                   ))} 
+                    {movies.map((movie, index) => (
+                        <li key={index}>{movie}</li>
+                    ))}
                 </ul>
             )}
         </div>
