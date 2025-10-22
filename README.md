@@ -1,16 +1,48 @@
-# React + Vite
+React State Management and Event Handling | Lesson 1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Practice: React Movie App
 
-Currently, two official plugins are available:
+Instructions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You will create a simple React application where users can:
 
-## React Compiler
+1. Select a movie genre from a dropdown menu.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. See a list of movies based on the selected genre.
 
-## Expanding the ESLint configuration
+3. View a loading message while the app "fetches" movie data.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. Display an error message if no genre is selected and the user tries to fetch
+data.
+
+Steps:
+
+1. Initial Setup
+
+● Create a React app.
+
+● Create a component named MovieSelector.
+
+2. Requirements
+
+● Use state to manage:
+
+○ selectedGenre (string): Tracks the currently selected genre.
+
+○ isLoading (boolean): Indicates if the app is "loading" movie data.
+
+○ error (string): Stores error messages, if any.
+
+○ movies (array): Holds the list of movies for the selected genre.
+
+3. Functionality
+
+● Dropdown menu to select a genre (e.g., Action, Comedy, Drama).
+
+● Button to "Fetch Movies" for the selected genre.
+
+● Display a list of movies after "fetching."
+
+● Show a loading spinner while fetching data.
+
+● Display an error message if no genre is selected.
